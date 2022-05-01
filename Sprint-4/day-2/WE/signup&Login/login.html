@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="Scontainer">
+        <input id="name" type="text" placeholder="enter email">
+        <input id="password" type="text" placeholder="enter password">
+        <input type="submit"/>
+    </form>
+   
+</body>
+</html>
+<script>
+   document.querySelector("#Scontainer").addEventListener("submit",loginfun);
+   var loginarr=JSON.parse(localStorage.getItem("loginform"))||[];
+   function loginfun(){
+        event.preventDefault();
+
+        var loginobj={
+            name:Scontainer.name.value,
+            password:Scontainer.password.value
+        };
+        loginarr.push(loginobj);
+        console.log(loginarr);
+        localStorage.setItem("loginform",JSON.stringify(loginarr));
+
+       var name=document.querySelector("#name").value;
+       var password=document.querySelector("#password").value;
+
+       var detailArr=JSON.parse(localStorage.getItem("detailsform"));
+    var flag=false;
+       detailArr.forEach(element => {
+           if(element.name==name && element.password==password){
+               console.log(name,password);
+            flag=true;
+            return ; 
+           }
+
+
+       });
+
+       if(flag){
+           alert("True")
+       }else{
+           alert("false")
+       }
+
+
+        
+       
+    }
+        
+
+</script>

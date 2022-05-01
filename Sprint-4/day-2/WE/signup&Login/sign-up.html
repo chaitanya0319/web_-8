@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="container">
+        <input id="name" type="text" placeholder="enter email">
+        <input id="phonenumber" type="text" placeholder="phone number">
+        <input id="password" type="text" placeholder="password">
+     <input type="submit"/>
+
+    </form>
+
+    <button onclick=login()>Already signup</button>
+
+</body>
+</html>
+
+<script>
+    document.querySelector("#container").addEventListener("submit",detailFun);
+    var detailArr=JSON.parse(localStorage.getItem("detailsform"))||[];
+    function login(){
+        window.location.href="login.html";
+    }
+    function detailFun(){
+        event.preventDefault();
+
+        var Detailobj={
+            name:container.name.value,
+            phonenume:container.phonenumber.value,
+            password:container.password.value
+        };
+        detailArr.push(Detailobj);
+        console.log(detailArr);
+
+        localStorage.setItem("detailsform",JSON.stringify(detailArr));
+        window.location.href = "login.html";
+    }
+
+</script>
